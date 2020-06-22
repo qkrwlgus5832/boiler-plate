@@ -1,8 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\models"
+    "\\client",
+    "\\client\\public",
+    "\\client\\src",
+    "\\client\\src\\components",
+    "\\client\\src\\components\\views",
+    "\\client\\src\\components\\views\\Footer",
+    "\\client\\src\\components\\views\\LoginPage",
+    "\\client\\src\\components\\views\\NavBar",
+    "\\client\\src\\_reducers"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\client\\src\\components\\views\\LoginPage\\LoginPage.js",
   "PreviewInSolutionExplorer": false
 }
