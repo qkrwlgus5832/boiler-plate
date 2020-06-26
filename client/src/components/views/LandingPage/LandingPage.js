@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
 function LandingPage(props) {
 
@@ -12,7 +13,7 @@ function LandingPage(props) {
         axios.get('api/users/logout')
             .then(response => {
                 if (response.data.success) {
-                    props.history.push('/login');
+                    props.history.push('/login'); // 이걸 쓰려면 react-router-dom이 필요
                 } else {
                     alert("logout failed");
                 }
@@ -32,4 +33,4 @@ function LandingPage(props) {
 
     );
 }
-export default LandingPage
+export default withRouter(LandingPage)

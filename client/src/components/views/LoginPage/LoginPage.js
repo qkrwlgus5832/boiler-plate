@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
+import {withRouter} from 'react-router-dom';
 
 function LoginPage(props) {
     const dispatch = useDispatch();
@@ -9,15 +10,15 @@ function LoginPage(props) {
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
 
-    const onEmailHander = (event) => { // email stateÀ» ¹Ù²ãÁÜ
+    const onEmailHander = (event) => { // email stateï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½
         setEmail(event.currentTarget.value)
     }
-    const onPasswordHandler = (event) => { // password stateÀ» ¹Ù²ãÁÜ
+    const onPasswordHandler = (event) => { // password stateï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½
         setPassword(event.currentTarget.value)
     }
     const onSubmitHandler = (event) => {
-        event.preventDefault(); // ÀÌ°Ô ¾øÀ¸¸é ÆäÀÌÁö°¡ refreshµÊ  
-                                 // page°¡ refreshµÇ¸é ¾Æ¹«°Íµµ ÇÒ ¼ö°¡ ¾øÀ½
+        event.preventDefault(); // ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ refreshï¿½ï¿½  
+                                 // pageï¿½ï¿½ refreshï¿½Ç¸ï¿½ ï¿½Æ¹ï¿½ï¿½Íµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         let body = {
             email: Email,
             password : Password
@@ -26,7 +27,7 @@ function LoginPage(props) {
         dispatch(loginUser(body))
             .then(response => {
                 if (response.payload.loginSuccess) {
-                    props.history.push('/') // ¸®¾×Æ®¿¡¼­ ÆäÀÌÁö¸¦ ÀÌµ¿½ÃÅ³ ¶§´Â ÀÌ·¸°Ô ÇÑ´Ù.
+                    props.history.push('/') // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
                 } else {
                     alert("Error");
                 }
@@ -54,4 +55,4 @@ function LoginPage(props) {
 
     );
 }
-export default LoginPage 
+export default withRouter(LoginPage)

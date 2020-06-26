@@ -2,15 +2,18 @@
   "ExpandedNodes": [
     "",
     "\\client",
-    "\\client\\public",
     "\\client\\src",
     "\\client\\src\\components",
     "\\client\\src\\components\\views",
     "\\client\\src\\components\\views\\Footer",
     "\\client\\src\\components\\views\\LoginPage",
     "\\client\\src\\components\\views\\NavBar",
-    "\\client\\src\\_reducers"
+    "\\client\\src\\hoc",
+    "\\client\\src\\_actions",
+    "\\client\\src\\_reducers",
+    "\\server",
+    "\\server\\middleware"
   ],
-  "SelectedNode": "\\client\\src\\components\\views\\LoginPage\\LoginPage.js",
+  "SelectedNode": "\\client\\src\\hoc\\auth.js",
   "PreviewInSolutionExplorer": false
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../_actions/user_action';
+import {withRouter} from 'react-router-dom';
 
 function RegisterPage(props) {
     const dispatch = useDispatch();
@@ -10,24 +11,24 @@ function RegisterPage(props) {
     const [Password, setPassword] = useState("")
     const [ConfirmPassword, setConfirmPassword] = useState("");
 
-    const onEmailHander = (event) => { // email stateÀ» ¹Ù²ãÁÜ
+    const onEmailHander = (event) => { // email stateï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½
         setEmail(event.currentTarget.value)
     }
-    const onNameHandler = (event) => { // email stateÀ» ¹Ù²ãÁÜ
+    const onNameHandler = (event) => { // email stateï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½
         setName(event.currentTarget.value)
     }
-    const onPasswordHandler = (event) => { // password stateÀ» ¹Ù²ãÁÜ
+    const onPasswordHandler = (event) => { // password stateï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½
         setPassword(event.currentTarget.value)
     }
-    const onConfirmPasswordHandler = (event) => { // password stateÀ» ¹Ù²ãÁÜ
+    const onConfirmPasswordHandler = (event) => { // password stateï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½
         setConfirmPassword(event.currentTarget.value)
     }
     const onSubmitHandler = (event) => {
-        event.preventDefault(); // ÀÌ°Ô ¾øÀ¸¸é ÆäÀÌÁö°¡ refreshµÊ  
-        // page°¡ refreshµÇ¸é ¾Æ¹«°Íµµ ÇÒ ¼ö°¡ ¾øÀ½
+        event.preventDefault(); // ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ refreshï¿½ï¿½  
+        // pageï¿½ï¿½ refreshï¿½Ç¸ï¿½ ï¿½Æ¹ï¿½ï¿½Íµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         if (Password != ConfirmPassword) {
-            return alert("ºñ¹Ð¹øÈ£¿Í ºñ¹Ð¹øÈ£ È®ÀÎÀº °°¾Æ¾ß ÇÕ´Ï´Ù."); // ÀÌ ¹ØÀ¸·Î ÁøÀÔÀ» ¸øÇÑ´Ù!
+            return alert("ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¾ï¿½ ï¿½Õ´Ï´ï¿½."); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½!
         }
         let body = {
             email: Email,
@@ -38,9 +39,9 @@ function RegisterPage(props) {
         dispatch(registerUser(body))
             .then(response => {
                 if (response.payload.success) {
-                    props.history.push('/login') // ¸®¾×Æ®¿¡¼­ ÆäÀÌÁö¸¦ ÀÌµ¿½ÃÅ³ ¶§´Â ÀÌ·¸°Ô ÇÑ´Ù.
+                    props.history.push('/login') // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
                 } else {
-                    alert("È¸¿ø °¡ÀÔ¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù");
+                    alert("È¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
                 }
             })
     }
@@ -76,4 +77,4 @@ function RegisterPage(props) {
 
     );
 }
-export default RegisterPage
+export default withRouter(RegisterPage)
