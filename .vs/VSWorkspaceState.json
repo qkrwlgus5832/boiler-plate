@@ -8,12 +8,9 @@
     "\\client\\src\\components\\views\\Footer",
     "\\client\\src\\components\\views\\LoginPage",
     "\\client\\src\\components\\views\\NavBar",
-    "\\client\\src\\hoc",
-    "\\client\\src\\_actions",
-    "\\client\\src\\_reducers",
-    "\\server",
-    "\\server\\middleware"
+    "\\client\\src\\components\\views\\RegisterPage",
+    "\\client\\src\\hoc"
   ],
-  "SelectedNode": "\\client\\src\\hoc\\auth.js",
+  "SelectedNode": "\\client\\src\\components\\views\\RegisterPage\\RegisterPage.js",
   "PreviewInSolutionExplorer": false
 }

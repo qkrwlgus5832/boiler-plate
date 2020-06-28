@@ -1,34 +1,49 @@
 import React, {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {auth} from '../_actions/user_action';
+import axios from 'axios'
 
+function isLoginedCheck(){
+	axios.get('api/users/auth', (response) => {
+			if (response.data.isAuth)
+				return true;
+			else
+				return false;
+		}
+	)
+}
 export default function (SpecificComponent, option, adminRoute = null) {
-	// option¿¡ null°ª, true°ª ,false°ªÀÌ µé¾î¿Ã ¼ö ÀÖÀ½
+	// optionï¿½ï¿½ nullï¿½ï¿½, trueï¿½ï¿½ ,falseï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	// nullÀº ¾Æ¹«³ª ÃâÀÔÀÌ °¡´ÉÇÑ ÆäÀÌÁö
-	// true´Â ·Î±×ÀÎÇÑ À¯Àú¸¸ ÃâÀÔÀÌ °¡´ÉÇÑ ÆäÀÌÁö 
-	// false´Â ·Î±×ÀÎÇÑ À¯Àú´Â ÃâÀÔÀÌ ºÒ°¡´ÉÇÑ ÆäÀÌÁö 
+	// nullï¿½ï¿½ ï¿½Æ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// trueï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	// falseï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 
-	function AuthenticationCheck(props) { // ÆäÀÌÁö°¡ ÀÌµ¿ÇÒ ¶§ ¸¶´Ù dispatch°¡ ÀÏ¾î³­´Ù.
+	function AuthenticationCheck(props) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ dispatchï¿½ï¿½ ï¿½Ï¾î³­ï¿½ï¿½.
 		const dispatch = useDispatch();
 		useEffect(() => {
 			dispatch(auth()).then(response => {
-				// ·Î±×ÀÎÇÏÁö ¾ÊÀº »óÅÂ
+				const state = {
+					isLogined : false
+				}
+				// ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				if (!response.payload.isAuth) {
 					if (option){
-						props.history.push('/login');
+						props.history.push('/login', state);
 					}
 				} else{
+					state.isLogined= true;
 					if (adminRoute && !response.payload.isAdmin){
-						props.history.push('/');
+						props.history.push('/', state);
 					}
 					if (!option)
-						props.history.push('/');
+						props.history.push('/', state);
 				}
+				
 			})
 		}, [])
 		return (
-			<SpecificComponent/>
+			<SpecificComponent isLogined={false}/>
 		 );
 	}
 	return AuthenticationCheck

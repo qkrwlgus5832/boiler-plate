@@ -23,7 +23,7 @@ function App() {
           of them to render at a time
         */}
                 <Switch>
-                    <Route exact path="/" component={Auth(LandingPage, null)} />  { /*Auth·Î component¸¦ °¨½ÎÁÜ*/}
+                    <Route exact path="/" component={Auth(LandingPage, null)} />  { /*Authï¿½ï¿½ componentï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/}
                     <Route exact path="/login" component={Auth(LoginPage, false)} />
                     <Route exact path="/register" component={Auth(RegisterPage, false)} />
                 </Switch>

@@ -11,24 +11,24 @@ function RegisterPage(props) {
     const [Password, setPassword] = useState("")
     const [ConfirmPassword, setConfirmPassword] = useState("");
 
-    const onEmailHander = (event) => { // email state�� �ٲ���
+    const onEmailHander = (event) => { // email state?�쏙???�쌕?�옙?�쏙??
         setEmail(event.currentTarget.value)
     }
-    const onNameHandler = (event) => { // email state�� �ٲ���
+    const onNameHandler = (event) => { // email state?�쏙???�쌕?�옙?�쏙??
         setName(event.currentTarget.value)
     }
-    const onPasswordHandler = (event) => { // password state�� �ٲ���
+    const onPasswordHandler = (event) => { // password state?�쏙???�쌕?�옙?�쏙??
         setPassword(event.currentTarget.value)
     }
-    const onConfirmPasswordHandler = (event) => { // password state�� �ٲ���
+    const onConfirmPasswordHandler = (event) => { // password state?�쏙???�쌕?�옙?�쏙??
         setConfirmPassword(event.currentTarget.value)
     }
     const onSubmitHandler = (event) => {
-        event.preventDefault(); // �̰� ������ �������� refresh��  
-        // page�� refresh�Ǹ� �ƹ��͵� �� ���� ����
+        event.preventDefault(); // ?�싱곤옙 ?�쏙?�占?�옙?�쏙???�쏙?�占?�옙?�쏙?�占?�옙 refresh?�쏙?? 
+        // page?�쏙??refresh?�실몌옙 ?�싣뱄옙?�싶?�옙 ?�쏙???�쏙?�占?�옙 ?�쏙?�占?�옙
 
         if (Password != ConfirmPassword) {
-            return alert("��й�ȣ�� ��й�ȣ Ȯ���� ���ƾ� �մϴ�."); // �� ������ ������ ���Ѵ�!
+            return alert("비밀번호와 확인비밀번호는 같아야 합니다."); // ?�쏙???�쏙?�占?�옙?�쏙???�쏙?�占?�옙?�쏙???�쏙?�占?�댐??
         }
         let body = {
             email: Email,
@@ -39,9 +39,9 @@ function RegisterPage(props) {
         dispatch(registerUser(body))
             .then(response => {
                 if (response.payload.success) {
-                    props.history.push('/login') // ����Ʈ���� �������� �̵���ų ���� �̷��� �Ѵ�.
+                    props.history.push('/login') // ?�쏙?�占?�옙?�占?�옙?�쏙???�쏙?�占?�옙?�쏙?�占?�옙 ?�싱?�옙?�쏙?�킬 ?�쏙?�占?�옙 ?�싱뤄옙?�쏙???�싼?�옙.
                 } else {
-                    alert("ȸ�� ���Կ� �����Ͽ����ϴ�");
+                    alert("회원가입에 실패하였습니다.");
                 }
             })
     }

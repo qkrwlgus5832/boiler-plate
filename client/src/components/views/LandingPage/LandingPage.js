@@ -4,6 +4,12 @@ import {withRouter} from 'react-router-dom';
 
 function LandingPage(props) {
 
+    let isLogined = false;
+
+    if (props.location.state !== undefined) {
+        isLogined = props.location.state.isLogined;
+    }
+
     useEffect(() => {
         axios.get('/api/hello')
             .then(response => console.log(response.data))
@@ -19,16 +25,19 @@ function LandingPage(props) {
                 }
             })
     }
+
     return (
         <div style={{
             display: 'flex', justifyContent: 'center', alignItems: 'center',
             width: '100%', height : '100vh'
         }}>
 
-            <h2> start page </h2>
+            <h2> 시작 페이지 </h2>
+           {isLogined == true &&       
             <button onClick={onClickHandler}>
                 logout
             </button>
+            }
         </div>
 
     );
