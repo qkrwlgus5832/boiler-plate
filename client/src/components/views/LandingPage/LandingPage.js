@@ -15,7 +15,7 @@ function LandingPage(props) {
             .then(response => console.log(response.data))
     }, [])
 
-    const onClickHandler = () => {
+    const onLogoutClickHandler = () => {
         axios.get('api/users/logout')
             .then(response => {
                 if (response.data.success) {
@@ -26,6 +26,10 @@ function LandingPage(props) {
             })
     }
 
+    const onLoginClickHandler = () => {
+        props.history.push('/login');
+    }
+
     return (
         <div style={{
             display: 'flex', justifyContent: 'center', alignItems: 'center',
@@ -34,8 +38,13 @@ function LandingPage(props) {
 
             <h2> 시작 페이지 </h2>
            {isLogined == true &&       
-            <button onClick={onClickHandler}>
+            <button onClick={onLogoutClickHandler}>
                 logout
+            </button>
+            }
+            {isLogined == false &&       
+            <button onClick={onLoginClickHandler}>
+                login
             </button>
             }
         </div>

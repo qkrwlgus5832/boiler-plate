@@ -13,20 +13,14 @@ function isLoginedCheck(){
 	)
 }
 export default function (SpecificComponent, option, adminRoute = null) {
-	// option�� null��, true�� ,false���� ���� �� ����
-
-	// null�� �ƹ��� ������ ������ ������
-	// true�� �α����� ������ ������ ������ ������ 
-	// false�� �α����� ������ ������ �Ұ����� ������ 
-
-	function AuthenticationCheck(props) { // �������� �̵��� �� ���� dispatch�� �Ͼ��.
+	function AuthenticationCheck(props) { 
 		const dispatch = useDispatch();
 		useEffect(() => {
 			dispatch(auth()).then(response => {
 				const state = {
 					isLogined : false
 				}
-				// �α������� ���� ����
+			
 				if (!response.payload.isAuth) {
 					if (option){
 						props.history.push('/login', state);
